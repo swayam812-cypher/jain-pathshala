@@ -1,3 +1,4 @@
+
 # Jain Pathshala — Learning Journey (LMS)
 
 A full-stack learning management system: student auth, 7-book sequential
@@ -56,3 +57,6 @@ the UI.
 - Frontend: `npm run build` produces `dist/` — deploy to Vercel/Netlify/
   any static host, and point it at your deployed backend's URL (update
   the API base URL in `src/api/client.js` or set up a proxy/rewrite).
+
+# Jain-Pathshala
+Panch Baliyati jain mandir pathshala
