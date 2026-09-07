@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Lora", "Georgia", serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-cream: #faf7f2;
+  --color-sand: #f3ede1;
+  --color-maroon: #a3402a;
+  --color-maroon-dark: #8a341f;
+  --color-slate: #2b2b31;
+  --color-gold: #d9a441;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-cream);
+  color: var(--color-slate);
+}
+
+.font-display {
+  font-family: var(--font-serif);
+}
