@@ -25,6 +25,5 @@ Thumbs.db
 *.sqlite
 *.sqlite3
 *.sqlite-wal
-*.sqlite-shmbackend/data.sqlite-shm
-backend/data.sqlite-wal
+*.sqlite-shm
 backend/*.sqlite-journal
