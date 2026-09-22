@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import api from "../api/client";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function BookDetail() {
   const { bookId } = useParams();
   const navigate = useNavigate();
+  const { t } = useLanguage();
   const [data, setData] = useState(null);
 
   const load = () => {
@@ -17,7 +19,7 @@ export default function BookDetail() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bookId]);
 
-  if (!data) return <div className="min-h-screen bg-cream"><Navbar /><p className="p-10 text-slate/40">Loading…</p></div>;
+  if (!data) return <div className="min-h-screen bg-cream"><Navbar /><p className="p-10 text-slate/40">{t("loading")}</p></div>;
 
   const { book, chapters, all_chapters_completed, last_attempt } = data;
   const completedCount = chapters.filter((c) => c.is_completed).length;
@@ -28,14 +30,14 @@ export default function BookDetail() {
       <Navbar />
       <main className="mx-auto max-w-4xl px-6 py-10">
         <button onClick={() => navigate("/")} className="text-xs font-medium tracking-[0.14em] text-maroon hover:underline">
-          ← JOURNEY
+          ← {t("journeyBack")}
         </button>
 
         <div className="mt-3 flex items-start justify-between">
           <div>
-            <p className="text-xs font-medium tracking-[0.14em] text-slate/40">BOOK {String(book.order_index).padStart(2, "0")}</p>
+            <p className="text-xs font-medium tracking-[0.14em] text-slate/40">{t("bookLabel")} {String(book.order_index).padStart(2, "0")}</p>
             <h1 className="mt-1 font-display text-4xl text-slate">{book.title}</h1>
-            <p className="mt-2 text-sm text-slate/50">{completedCount} of {chapters.length} chapters completed ({percent}%)</p>
+            <p className="mt-2 text-sm text-slate/50">{completedCount} {t("of")} {chapters.length} {t("chaptersCompletedSuffix")} ({percent}%)</p>
           </div>
 
           <div className="text-right">
@@ -44,11 +46,11 @@ export default function BookDetail() {
               onClick={() => navigate(`/books/${bookId}/quiz`)}
               className="flex items-center gap-2 rounded-full bg-maroon px-5 py-2.5 text-sm font-medium text-white transition hover:bg-maroon-dark disabled:cursor-not-allowed disabled:bg-slate/20"
             >
-              <ClipboardIcon /> Take Book Test
+              <ClipboardIcon /> {t("takeBookTest")}
             </button>
             {last_attempt && (
               <p className="mt-1.5 text-xs text-slate/40">
-                Last attempt: {last_attempt.score_percentage}% · {last_attempt.passed ? "Passed" : "Retry needed"}
+                {t("lastAttempt")}: {last_attempt.score_percentage}% · {last_attempt.passed ? t("passed") : t("retryNeeded")}
               </p>
             )}
           </div>
@@ -69,10 +71,10 @@ export default function BookDetail() {
               </div>
               {ch.is_completed ? (
                 <span className="flex items-center gap-1.5 text-xs font-medium text-maroon">
-                  <CheckIcon /> Completed
+                  <CheckIcon /> {t("completed")}
                 </span>
               ) : (
-                <span className="text-xs text-slate/35">{Math.round(ch.watch_percentage)}% watched</span>
+                <span className="text-xs text-slate/35">{Math.round(ch.watch_percentage)}% {t("watched")}</span>
               )}
             </Link>
           ))}

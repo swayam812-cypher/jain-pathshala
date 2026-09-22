@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import api from "../api/client";
+import { useLanguage } from "../context/LanguageContext";
 
 let ytApiPromise = null;
 function loadYouTubeApi() {
@@ -19,6 +20,7 @@ function loadYouTubeApi() {
 export default function Study() {
   const { bookId, chapterId } = useParams();
   const navigate = useNavigate();
+  const { t } = useLanguage();
   const [book, setBook] = useState(null);
   const [chapter, setChapter] = useState(null);
   const [percent, setPercent] = useState(0);
@@ -75,7 +77,7 @@ export default function Study() {
   }, [chapter?.id]);
 
   if (!book || !chapter) {
-    return <div className="min-h-screen bg-cream"><Navbar /><p className="p-10 text-slate/40">Loading…</p></div>;
+    return <div className="min-h-screen bg-cream"><Navbar /><p className="p-10 text-slate/40">{t("loading")}</p></div>;
   }
 
   return (
@@ -86,18 +88,18 @@ export default function Study() {
           <button onClick={() => navigate(`/books/${bookId}`)} className="flex items-center gap-2 text-slate/60 hover:text-slate">
             <BackIcon />
             <span>
-              <span className="block text-[11px] font-medium tracking-[0.14em] text-slate/40">NOW STUDYING</span>
+              <span className="block text-[11px] font-medium tracking-[0.14em] text-slate/40">{t("nowStudying")}</span>
               <span className="block font-display text-lg text-slate">{chapter.title}</span>
             </span>
           </button>
 
           <div className="flex items-center gap-4">
             <div className="text-right">
-              <p className="text-[11px] tracking-[0.1em] text-slate/40">PROGRESS</p>
+              <p className="text-[11px] tracking-[0.1em] text-slate/40">{t("progressLabel")}</p>
               <p className="text-sm font-medium text-slate">{percent}%</p>
             </div>
             <span className={`rounded-full px-4 py-1.5 text-xs font-medium ${completed ? "bg-maroon/10 text-maroon" : "bg-slate/10 text-slate/50"}`}>
-              {completed ? "✓ Completed" : "In progress"}
+              {completed ? `✓ ${t("completed")}` : t("inProgress")}
             </span>
           </div>
         </div>
@@ -115,7 +117,7 @@ export default function Study() {
               <iframe src={chapter.pdf_url} title="Chapter reading" className="aspect-video w-full lg:h-full lg:aspect-auto" style={{ minHeight: 420 }} />
             ) : (
               <div className="flex h-full min-h-[420px] items-center justify-center px-8 text-center text-sm text-slate/35">
-                No reading material has been added for this chapter yet.
+                {t("noPdfYet")}
               </div>
             )}
           </div>

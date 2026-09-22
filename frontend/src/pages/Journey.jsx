@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import api from "../api/client";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Journey() {
+  const { t } = useLanguage();
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -18,19 +20,18 @@ export default function Journey() {
     <div className="min-h-screen bg-cream">
       <Navbar />
       <main className="mx-auto max-w-6xl px-6 py-10">
-        <p className="text-xs font-medium tracking-[0.16em] text-maroon">YOUR LEARNING JOURNEY</p>
-        <h1 className="mt-2 font-display text-4xl text-slate">The Seven Books of Study</h1>
+        <p className="text-xs font-medium tracking-[0.16em] text-maroon">{t("journeyEyebrow")}</p>
+        <h1 className="mt-2 font-display text-4xl text-slate">{t("sevenBooks")}</h1>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate/60">
-          Complete each book at your own pace. Watch every chapter to at least 90%, then pass
-          the reflection with 50% or more to unlock the next volume.
+          {t("journeyIntro")}
         </p>
 
         {loading ? (
-          <p className="mt-10 text-slate/40">Loading your journey…</p>
+          <p className="mt-10 text-slate/40">{t("loadingJourney")}</p>
         ) : (
           <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {books.map((book, i) => (
-              <BookCard key={book.id} book={book} index={i} />
+              <BookCard key={book.id} book={book} index={i} t={t} />
             ))}
           </div>
         )}
@@ -39,14 +40,14 @@ export default function Journey() {
   );
 }
 
-function BookCard({ book, index }) {
+function BookCard({ book, index, t }) {
   const locked = !book.unlocked;
   const num = String(index + 1).padStart(2, "0");
 
   return (
     <div className={`rounded-xl border border-black/5 bg-white p-6 shadow-sm ${locked ? "opacity-80" : ""}`}>
       <div className="flex items-start justify-between">
-        <p className="text-[11px] font-medium tracking-[0.14em] text-slate/40">BOOK {num}</p>
+        <p className="text-[11px] font-medium tracking-[0.14em] text-slate/40">{t("bookLabel")} {num}</p>
         {book.has_certificate ? (
           <MedalIcon />
         ) : locked ? (
@@ -56,7 +57,7 @@ function BookCard({ book, index }) {
       <h3 className="mt-1 font-display text-2xl text-slate/90">{book.title}</h3>
 
       <div className="mt-5 flex items-center justify-between text-xs text-slate/50">
-        <span>{book.chapters_completed}/{book.chapters_total} chapters</span>
+        <span>{book.chapters_completed}/{book.chapters_total} {t("chaptersLower")}</span>
         <span>{book.percent}%</span>
       </div>
       <div className="mt-1.5 h-1 w-full overflow-hidden rounded-full bg-black/5">
@@ -64,21 +65,21 @@ function BookCard({ book, index }) {
       </div>
 
       {locked ? (
-        <p className="mt-5 text-xs text-slate/35">Complete previous book to unlock</p>
+        <p className="mt-5 text-xs text-slate/35">{t("completePreviousToUnlock")}</p>
       ) : (
         <div className="mt-5 flex gap-2">
           <Link
             to={`/books/${book.id}`}
             className="flex items-center gap-1.5 rounded-full bg-maroon px-4 py-2 text-xs font-medium text-white hover:bg-maroon-dark"
           >
-            <PlayIcon /> {book.percent >= 100 ? "Revisit" : "Continue"}
+            <PlayIcon /> {book.percent >= 100 ? t("revisitBtn") : t("continueBtn")}
           </Link>
           {book.has_certificate && (
             <Link
               to={`/certificate/${book.id}`}
               className="rounded-full border border-maroon/30 px-4 py-2 text-xs font-medium text-maroon hover:bg-maroon/5"
             >
-              Certificate
+              {t("certificateBtn")}
             </Link>
           )}
         </div>

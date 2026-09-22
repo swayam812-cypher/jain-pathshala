@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import api from "../api/client";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Quiz() {
   const { bookId } = useParams();
   const navigate = useNavigate();
+  const { t } = useLanguage();
   const [questions, setQuestions] = useState([]);
   const [responses, setResponses] = useState({});
   const [result, setResult] = useState(null);
@@ -37,21 +39,19 @@ export default function Quiz() {
             <span className="font-display text-2xl">{result.score_percentage}%</span>
           </div>
           <h1 className="font-display text-2xl text-slate">
-            {result.passed ? "Well done — you passed!" : "Not quite there yet"}
+            {result.passed ? t("passedTitle") : t("failedTitle")}
           </h1>
           <p className="mt-2 text-sm text-slate/60">
-            {result.passed
-              ? "Your certificate is ready and the next book has been unlocked."
-              : "You need at least 50% on the multiple choice questions to pass. Review the chapters and try again."}
+            {result.passed ? t("passedDesc") : t("failedDesc")}
           </p>
           <div className="mt-8 flex justify-center gap-3">
             {result.passed && (
               <button onClick={() => navigate(`/certificate/${bookId}`)} className="rounded-full bg-maroon px-5 py-2.5 text-sm font-medium text-white hover:bg-maroon-dark">
-                View Certificate
+                {t("viewCertificate")}
               </button>
             )}
             <button onClick={() => navigate("/")} className="rounded-full border border-black/10 px-5 py-2.5 text-sm font-medium text-slate hover:bg-black/5">
-              Back to Journey
+              {t("backToJourney")}
             </button>
           </div>
         </main>
@@ -63,9 +63,9 @@ export default function Quiz() {
     <div className="min-h-screen bg-cream">
       <Navbar />
       <main className="mx-auto max-w-2xl px-6 py-10">
-        <button onClick={() => navigate(`/books/${bookId}`)} className="text-xs font-medium tracking-[0.14em] text-maroon hover:underline">← BACK</button>
-        <h1 className="mt-3 font-display text-3xl text-slate">Book Test</h1>
-        <p className="mt-2 text-sm text-slate/50">Answer every question below. You need 50% or more on the multiple choice questions to pass.</p>
+        <button onClick={() => navigate(`/books/${bookId}`)} className="text-xs font-medium tracking-[0.14em] text-maroon hover:underline">← {t("back")}</button>
+        <h1 className="mt-3 font-display text-3xl text-slate">{t("bookTestTitle")}</h1>
+        <p className="mt-2 text-sm text-slate/50">{t("bookTestDesc")}</p>
 
         <form onSubmit={submit} className="mt-8 space-y-6">
           {questions.map((q, i) => (
@@ -91,14 +91,14 @@ export default function Quiz() {
                   value={responses[q.id] || ""}
                   onChange={(e) => setAnswer(q.id, e.target.value)}
                   className="mt-3 w-full rounded-md border border-black/10 p-3 text-sm outline-none focus:border-maroon"
-                  placeholder="Write your reflection here…"
+                  placeholder={t("reflectionPlaceholder")}
                 />
               )}
             </div>
           ))}
 
           <button disabled={busy} type="submit" className="w-full rounded-full bg-maroon py-3 text-sm font-medium text-white hover:bg-maroon-dark disabled:opacity-60">
-            {busy ? "Submitting…" : "Submit Test"}
+            {busy ? t("submitting") : t("submitTest")}
           </button>
         </form>
       </main>

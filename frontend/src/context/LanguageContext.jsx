@@ -1,4 +1,3 @@
-
 import {
   createContext,
   useContext,
@@ -58,6 +57,101 @@ const translations = {
     valuesAndConduct: "Values and Conduct",
     practice: "Practice",
     revisionAndReflection: "Revision and Reflection",
+
+    // Generic / shared
+    back: "Back",
+    loading: "Loading…",
+    genericError: "Something went wrong. Please try again.",
+    of: "of",
+    watched: "watched",
+    completed: "Completed",
+    inProgress: "In progress",
+
+    // Login
+    signInSubtitle: "Sign in to continue your learning journey",
+    passwordLabel: "Password",
+    signingIn: "Signing in…",
+    signIn: "Sign in",
+    newHere: "New here?",
+    createAccount: "Create an account",
+
+    // Signup
+    beginJourney: "Begin your journey",
+    createAccountSubtitle: "Create an account to start studying",
+    fullNameLabel: "Full name",
+    fullNamePlaceholder: "Your full name",
+    passwordMinPlaceholder: "At least 6 characters",
+    creatingAccount: "Creating account…",
+    createAccountBtn: "Create account",
+    alreadyHaveAccount: "Already have an account?",
+
+    // Journey
+    journeyEyebrow: "YOUR LEARNING JOURNEY",
+    journeyIntro:
+      "Complete each book at your own pace. Watch every chapter to at least 90%, then pass the reflection with 50% or more to unlock the next volume.",
+    loadingJourney: "Loading your journey…",
+    bookLabel: "BOOK",
+    chaptersLower: "chapters",
+    completePreviousToUnlock: "Complete previous book to unlock",
+    continueBtn: "Continue",
+    revisitBtn: "Revisit",
+    certificateBtn: "Certificate",
+
+    // BookDetail
+    journeyBack: "JOURNEY",
+    chaptersCompletedSuffix: "chapters completed",
+    takeBookTest: "Take Book Test",
+    lastAttempt: "Last attempt",
+    passed: "Passed",
+    retryNeeded: "Retry needed",
+
+    // Study
+    nowStudying: "NOW STUDYING",
+    progressLabel: "PROGRESS",
+    noPdfYet: "No reading material has been added for this chapter yet.",
+
+    // Quiz
+    passedTitle: "Well done — you passed!",
+    failedTitle: "Not quite there yet",
+    passedDesc:
+      "Your certificate is ready and the next book has been unlocked.",
+    failedDesc:
+      "You need at least 50% on the multiple choice questions to pass. Review the chapters and try again.",
+    viewCertificate: "View Certificate",
+    bookTestTitle: "Book Test",
+    bookTestDesc:
+      "Answer every question below. You need 50% or more on the multiple choice questions to pass.",
+    reflectionPlaceholder: "Write your reflection here…",
+    submitting: "Submitting…",
+    submitTest: "Submit Test",
+
+    // Certificate
+    backToJourneyArrow: "← Back to journey",
+    downloadPdf: "Download PDF",
+    certificateOfCompletion: "Certificate of Completion",
+    acknowledgeThat: "This is to acknowledge that",
+    hasCompletedBook:
+      "has diligently completed the study and reflection of the book",
+    dateOfIssue: "DATE OF ISSUE",
+    serialNumber: "SERIAL NUMBER",
+    certClosingLine:
+      "May the study of these teachings deepen wisdom, compassion, and peace.",
+    unableToLoadCertificate: "Unable to load certificate",
+
+    // Profile
+    myProfile: "My Profile",
+    manageDetails: "Manage your personal details.",
+    fullNameFieldLabel: "Full Name",
+    ageLabel: "Age",
+    agePlaceholder: "Enter your age",
+    genderLabel: "Gender",
+    selectGender: "Select gender",
+    genderMale: "Male",
+    genderFemale: "Female",
+    genderOther: "Other",
+    genderPreferNotToSay: "Prefer not to say",
+    saveProfile: "Save Profile",
+    profileSaved: "Profile saved successfully.",
   },
 
   hi: {
@@ -109,6 +203,101 @@ const translations = {
     valuesAndConduct: "मूल्य और आचरण",
     practice: "अभ्यास",
     revisionAndReflection: "पुनरावृत्ति और चिंतन",
+
+    // Generic / shared
+    back: "वापस",
+    loading: "लोड हो रहा है…",
+    genericError: "कुछ गड़बड़ हो गई। कृपया पुनः प्रयास करें।",
+    of: "में से",
+    watched: "देखा गया",
+    completed: "पूर्ण",
+    inProgress: "जारी है",
+
+    // Login
+    signInSubtitle: "अपनी शिक्षा यात्रा जारी रखने के लिए साइन इन करें",
+    passwordLabel: "पासवर्ड",
+    signingIn: "साइन इन हो रहा है…",
+    signIn: "साइन इन करें",
+    newHere: "नए यहाँ हैं?",
+    createAccount: "खाता बनाएँ",
+
+    // Signup
+    beginJourney: "अपनी यात्रा शुरू करें",
+    createAccountSubtitle: "अध्ययन शुरू करने के लिए खाता बनाएँ",
+    fullNameLabel: "पूरा नाम",
+    fullNamePlaceholder: "आपका पूरा नाम",
+    passwordMinPlaceholder: "कम से कम 6 अक्षर",
+    creatingAccount: "खाता बनाया जा रहा है…",
+    createAccountBtn: "खाता बनाएँ",
+    alreadyHaveAccount: "पहले से खाता है?",
+
+    // Journey
+    journeyEyebrow: "आपकी शिक्षा यात्रा",
+    journeyIntro:
+      "हर पुस्तक को अपनी गति से पूरा करें। अगली पुस्तक अनलॉक करने के लिए हर अध्याय को कम से कम 90% देखें, फिर चिंतन में 50% या अधिक अंक प्राप्त करें।",
+    loadingJourney: "आपकी यात्रा लोड हो रही है…",
+    bookLabel: "पुस्तक",
+    chaptersLower: "अध्याय",
+    completePreviousToUnlock: "अनलॉक करने के लिए पिछली पुस्तक पूरी करें",
+    continueBtn: "जारी रखें",
+    revisitBtn: "पुनः देखें",
+    certificateBtn: "प्रमाणपत्र",
+
+    // BookDetail
+    journeyBack: "यात्रा",
+    chaptersCompletedSuffix: "अध्याय पूर्ण",
+    takeBookTest: "पुस्तक परीक्षा दें",
+    lastAttempt: "पिछला प्रयास",
+    passed: "उत्तीर्ण",
+    retryNeeded: "पुनः प्रयास आवश्यक",
+
+    // Study
+    nowStudying: "अभी अध्ययन कर रहे हैं",
+    progressLabel: "प्रगति",
+    noPdfYet: "इस अध्याय के लिए अभी तक पठन सामग्री नहीं जोड़ी गई है।",
+
+    // Quiz
+    passedTitle: "शाबाश — आप उत्तीर्ण हुए!",
+    failedTitle: "अभी सफलता नहीं मिली",
+    passedDesc:
+      "आपका प्रमाणपत्र तैयार है और अगली पुस्तक अनलॉक हो गई है।",
+    failedDesc:
+      "उत्तीर्ण होने के लिए बहुविकल्पीय प्रश्नों में कम से कम 50% अंक आवश्यक हैं। अध्याय दोहराएँ और फिर प्रयास करें।",
+    viewCertificate: "प्रमाणपत्र देखें",
+    bookTestTitle: "पुस्तक परीक्षा",
+    bookTestDesc:
+      "नीचे दिए गए हर प्रश्न का उत्तर दें। उत्तीर्ण होने के लिए बहुविकल्पीय प्रश्नों में कम से कम 50% अंक चाहिए।",
+    reflectionPlaceholder: "अपना विचार यहाँ लिखें…",
+    submitting: "जमा हो रहा है…",
+    submitTest: "परीक्षा जमा करें",
+
+    // Certificate
+    backToJourneyArrow: "← यात्रा पर वापस जाएँ",
+    downloadPdf: "PDF डाउनलोड करें",
+    certificateOfCompletion: "पूर्णता प्रमाणपत्र",
+    acknowledgeThat: "यह प्रमाणित किया जाता है कि",
+    hasCompletedBook:
+      "ने इस पुस्तक का अध्ययन एवं चिंतन निष्ठापूर्वक पूर्ण किया है",
+    dateOfIssue: "जारी करने की तिथि",
+    serialNumber: "क्रमांक",
+    certClosingLine:
+      "इन शिक्षाओं का अध्ययन ज्ञान, करुणा और शांति को गहरा करे।",
+    unableToLoadCertificate: "प्रमाणपत्र लोड नहीं हो सका",
+
+    // Profile
+    myProfile: "मेरी प्रोफ़ाइल",
+    manageDetails: "अपनी व्यक्तिगत जानकारी प्रबंधित करें।",
+    fullNameFieldLabel: "पूरा नाम",
+    ageLabel: "आयु",
+    agePlaceholder: "अपनी आयु दर्ज करें",
+    genderLabel: "लिंग",
+    selectGender: "लिंग चुनें",
+    genderMale: "पुरुष",
+    genderFemale: "महिला",
+    genderOther: "अन्य",
+    genderPreferNotToSay: "बताना नहीं चाहते",
+    saveProfile: "प्रोफ़ाइल सहेजें",
+    profileSaved: "प्रोफ़ाइल सफलतापूर्वक सहेजी गई।",
   },
 };
 
