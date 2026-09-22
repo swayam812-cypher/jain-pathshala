@@ -1,0 +1,18 @@
+.language-toggle {
+  padding: 8px 14px;
+  border: 1px solid #d8c7a3;
+  border-radius: 20px;
+  background: #fffaf0;
+  color: #68451e;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.language-toggle:hover {
+  background: #f2e4c8;
+  transform: translateY(-1px);
+}
+.language-toggle:focus-visible {
+  outline: 2px solid #8b5e2b;
+  outline-offset: 3px;
+}
